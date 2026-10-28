@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layanan LUUNASTORE.IN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a16;
+    --panel:#13132a;
+    --panel-2:#191934;
+    --line:#252548;
+    --violet:#7c5cff;
+    --violet-soft:rgba(124,92,255,.14);
+    --teal:#22d3b0;
+    --amber:#f5a623;
+    --red:#ef4444;
+    --red-soft:rgba(239,68,68,.1);
+    --text:#e7e7f5;
+    --text-dim:#8f8fb0;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Inter',sans-serif; font-size:15px; line-height:1.6;
+    padding-bottom:60px;
+  }
+  h1,h2,h3,.disp{ font-family:'Rajdhani',sans-serif; font-weight:700; letter-spacing:.02em; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; padding:52px 22px 40px; overflow:hidden;
+    background:
+      radial-gradient(600px 300px at 15% -10%, rgba(124,92,255,.35), transparent 60%),
+      radial-gradient(500px 260px at 110% 10%, rgba(34,211,176,.18), transparent 55%),
+      var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .hero .eyebrow{ color:var(--teal); font-size:12.5px; font-weight:600; }
+  .hero h1{ font-size:38px; margin:8px 0 6px; line-height:1.05; color:#fff; }
+  .hero h1 span{ color:var(--violet); }
+  .hero p{ color:var(--text-dim); font-size:14.5px; max-width:34ch; margin:0; }
+  .hero .stats{ display:flex; gap:18px; margin-top:22px; padding-top:18px; border-top:1px solid var(--line); }
+  .hero .stat b{ display:block; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:21px; color:#fff; line-height:1.1; }
+  .hero .stat span{ display:block; font-size:11.5px; color:var(--text-dim); margin-top:2px; }
+  .hero .stat:nth-child(1) b{ color:var(--teal); }
+  .hero .stat:nth-child(2) b{ color:var(--violet); }
+  .hero .stat:nth-child(3) b{ color:var(--amber); }
+
+  /* ---------- DAFTAR ISI (nav vertikal) ---------- */
+  .toc{ padding:22px 0 6px; }
+  .toc-title{ color:var(--text-dim); font-size:12.5px; font-weight:700; letter-spacing:.06em; margin-bottom:10px; }
+  .toc-list{ display:flex; flex-direction:column; gap:9px; }
+  .toc-list a{
+    display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff;
+    background:var(--panel); border:1px solid var(--line);
+    padding:14px 16px; border-radius:12px; font-size:14.5px; font-weight:600;
+  }
+  .toc-list a .num{
+    flex-shrink:0; width:30px; height:30px; border-radius:9px; background:var(--violet-soft);
+    color:var(--violet); font-family:'Rajdhani',sans-serif; font-weight:700; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .toc-list a .arrow{ margin-left:auto; color:var(--text-dim); font-size:16px; }
+
+  /* ---------- LAYANAN KAMI ---------- */
+  .svc-list{ display:flex; flex-direction:column; gap:12px; margin-top:16px; }
+  .svc-card{ display:flex; gap:14px; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; }
+  .svc-card .ico{
+    flex-shrink:0; width:42px; height:42px; border-radius:11px; background:var(--violet-soft);
+    display:flex; align-items:center; justify-content:center; font-size:20px;
+  }
+  .svc-card h3{ margin:0 0 4px; font-size:16px; color:#fff; font-family:'Rajdhani',sans-serif; font-weight:700; }
+  .svc-card p{ margin:0; font-size:13px; color:var(--text-dim); }
+  .svc-card .note{ display:inline-block; margin-top:6px; font-size:11px; font-weight:700; color:var(--amber); background:rgba(245,166,35,.12); padding:2px 8px; border-radius:20px; }
+
+  /* ---------- GABUNG GRUP ---------- */
+  .grup-list{ display:flex; flex-direction:column; gap:12px; margin-top:16px; }
+  .grup-card{
+    display:flex; align-items:center; gap:14px; text-decoration:none;
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:15px 16px;
+  }
+  .grup-card .ico{
+    flex-shrink:0; width:42px; height:42px; border-radius:11px; background:rgba(34,211,176,.14);
+    display:flex; align-items:center; justify-content:center; font-size:19px;
+  }
+  .grup-card h3{ margin:0 0 2px; font-size:15px; color:#fff; font-family:'Rajdhani',sans-serif; font-weight:700; }
+  .grup-card p{ margin:0; font-size:12px; color:var(--teal); font-weight:600; }
+  .grup-card .go{ margin-left:auto; color:var(--text-dim); font-size:17px; flex-shrink:0; }
+
+  /* ---------- TESTIMONI ---------- */
+  .testi-scroll{ display:flex; gap:12px; overflow-x:auto; padding:16px 0 6px; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .testi-scroll::-webkit-scrollbar{ display:none; }
+  .testi-scroll img{
+    flex-shrink:0; width:200px; border-radius:14px; border:1px solid var(--line);
+    display:block;
+  }
+  .testi-cap{ text-align:center; font-size:11.5px; color:var(--text-dim); margin-top:8px; }
+
+  /* ---------- JAM OPERASIONAL ---------- */
+  .jam-panel{
+    display:flex; align-items:center; gap:16px; background:var(--panel); border:1px solid var(--line);
+    border-radius:14px; padding:20px; margin-top:16px;
+  }
+  .jam-panel .ico{ font-size:30px; }
+  .jam-panel b{ display:block; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:22px; color:#fff; }
+  .jam-panel span{ font-size:12.5px; color:var(--text-dim); }
+
+  /* ---------- SYARAT & KETENTUAN ---------- */
+  .rule-list{ margin-top:16px; display:flex; flex-direction:column; gap:10px; }
+  .rule-item{ display:flex; gap:12px; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:13px 15px; font-size:13.3px; color:var(--text); }
+  .rule-item .n{ flex-shrink:0; color:var(--violet); font-family:'Rajdhani',sans-serif; font-weight:700; }
+
+  /* ---------- LAYOUT ---------- */
+  .wrap{ max-width:640px; margin:0 auto; padding:0 18px; }
+  section{ scroll-margin-top:64px; padding:38px 0; border-bottom:1px solid var(--line); }
+  section:last-child{ border-bottom:none; }
+  .kicker{ display:flex; align-items:center; gap:8px; color:var(--violet); font-size:12.5px; font-weight:700; letter-spacing:.06em; margin-bottom:8px; }
+  .kicker .bar{ width:18px; height:2px; background:var(--violet); }
+  section h2{ font-size:26px; color:#fff; margin:0 0 14px; }
+  section > p.lead{ color:var(--text); font-size:14.5px; }
+  .panel{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; }
+
+  /* ---------- TIMELINE (proses rekber) ---------- */
+  .timeline{ position:relative; margin-top:18px; padding-left:34px; }
+  .timeline::before{ content:''; position:absolute; left:13px; top:6px; bottom:6px; width:2px; background:linear-gradient(var(--violet), var(--teal)); }
+  .tl-item{ position:relative; padding-bottom:22px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:attr(data-n); position:absolute; left:-34px; top:0;
+    width:28px; height:28px; border-radius:50%; background:var(--panel-2); border:2px solid var(--violet);
+    color:#fff; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:13px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .tl-item p{ margin:0; font-size:14px; color:var(--text); background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:11px 14px; }
+  .tl-item b{ color:#fff; }
+
+  /* ---------- JAPOST COMPARE ---------- */
+  .compare{ display:grid; grid-template-columns:1fr; gap:12px; margin-top:16px; }
+  @media(min-width:520px){ .compare{ grid-template-columns:1fr 1fr; } }
+  .compare-card{ background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px; }
+  .compare-card .tag{ display:inline-block; font-size:11px; font-weight:700; letter-spacing:.04em; padding:4px 10px; border-radius:20px; margin-bottom:10px; }
+  .compare-card.dropship .tag{ background:rgba(34,211,176,.15); color:var(--teal); }
+  .compare-card.biasa .tag{ background:var(--violet-soft); color:var(--violet); }
+  .compare-card h3{ margin:0 0 4px; font-size:20px; color:#fff; }
+  .compare-card .fee{ font-size:30px; font-weight:700; font-family:'Rajdhani',sans-serif; margin:6px 0 10px; }
+  .compare-card.dropship .fee{ color:var(--teal); }
+  .compare-card.biasa .fee{ color:var(--violet); }
+  .compare-card .fee small{ font-size:13px; color:var(--text-dim); font-weight:600; }
+  .compare-card ul{ margin:0; padding-left:18px; font-size:13.5px; color:var(--text-dim); }
+  .compare-card li{ margin-bottom:5px; }
+  .compare-card li b{ color:var(--text); }
+
+  /* ---------- ACCORDION (amankan akun) ---------- */
+  details{ background:var(--panel); border:1px solid var(--line); border-radius:14px; margin-bottom:12px; overflow:hidden; }
+  details[open]{ border-color:var(--violet); }
+  summary{
+    list-style:none; cursor:pointer; padding:16px 18px; font-family:'Rajdhani',sans-serif;
+    font-weight:700; font-size:17px; color:#fff; display:flex; align-items:center; justify-content:space-between;
+  }
+  summary::-webkit-details-marker{ display:none; }
+  summary .chev{ color:var(--violet); transition:transform .2s; font-size:14px; }
+  details[open] summary .chev{ transform:rotate(180deg); }
+  .acc-body{ padding:0 18px 18px; }
+  .acc-body ol{ margin:0; padding-left:20px; font-size:13.8px; }
+  .acc-body li{ margin-bottom:9px; }
+  .acc-body li b{ color:#fff; }
+  .warn{
+    display:flex; gap:10px; background:var(--red-soft); border:1px solid rgba(239,68,68,.35);
+    border-radius:10px; padding:11px 13px; font-size:12.8px; color:#fecaca; margin:12px 0;
+  }
+  .warn b{ color:#fff; }
+  .acc-body a{ color:var(--teal); }
+
+  footer{ text-align:center; padding:30px 18px 0; color:var(--text-dim); font-size:12px; }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">LUUNASTORE.IN</div>
+      <h1>Hai, selamat datang<br>di <span>Luunastore</span></h1>
+      <p>Tentang layanan kami — biar kamu paham gimana proses transaksi & promosi akun berjalan dengan aman.</p>
+      <div class="stats">
+        <div class="stat"><b>2022</b><span>Berjalan sejak</span></div>
+        <div class="stat"><b>09–23</b><span>Jam operasional WIB</span></div>
+        <div class="stat"><b>4</b><span>Grup WhatsApp</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="toc">
+      <div class="toc-title">DAFTAR ISI — TAP UNTUK LANGSUNG LOMPAT</div>
+      <div class="toc-list">
+        <a href="#layanan-kami"><span class="num">1</span>Layanan Kami<span class="arrow">↓</span></a>
+        <a href="#rekber-apa"><span class="num">2</span>Apa itu Rekber<span class="arrow">↓</span></a>
+        <a href="#rekber-proses"><span class="num">3</span>Proses Rekber<span class="arrow">↓</span></a>
+        <a href="#japost-apa"><span class="num">4</span>Apa itu Japost<span class="arrow">↓</span></a>
+        <a href="#japost-cara"><span class="num">5</span>Cara Kerja Japost<span class="arrow">↓</span></a>
+        <a href="#amankan"><span class="num">6</span>Cara Amankan Akun<span class="arrow">↓</span></a>
+        <a href="#grup"><span class="num">7</span>Gabung Grup Kami<span class="arrow">↓</span></a>
+        <a href="#testimoni"><span class="num">8</span>Testimoni<span class="arrow">↓</span></a>
+        <a href="#jam"><span class="num">9</span>Jam Operasional<span class="arrow">↓</span></a>
+        <a href="#syarat"><span class="num">10</span>Syarat & Ketentuan<span class="arrow">↓</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <section id="layanan-kami">
+      <div class="kicker"><div class="bar"></div>LAYANAN KAMI</div>
+      <h2>Apa Saja Layanan Kami?</h2>
+      <p class="lead">Selain rekber dan japost, kami juga buka beberapa layanan lain:</p>
+      <div class="svc-list">
+        <div class="svc-card">
+          <div class="ico">🎮</div>
+          <div>
+            <h3>Jual Beli Akun Game</h3>
+            <p>Mau jual atau beli akun game apa aja, bisa lewat sistem rekber biar transaksinya aman.</p>
+          </div>
+        </div>
+        <div class="svc-card">
+          <div class="ico">📱</div>
+          <div>
+            <h3>Jual Beli Akun & Aplikasi Premium</h3>
+            <p>Selain akun game, kami juga terima jual beli akun/aplikasi premium lainnya.</p>
+          </div>
+        </div>
+        <div class="svc-card">
+          <div class="ico">💳</div>
+          <div>
+            <h3>Top Up Game</h3>
+            <p>Bisa top up via login akun atau via ID, tergantung game dan request kamu.</p>
+            <span class="note">Ketersediaan tergantung request</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rekber-apa">
+      <div class="kicker"><div class="bar"></div>REKBER</div>
+      <h2>Apa itu Rekber?</h2>
+      <p class="lead">
+        Rekber (Rekening Bersama) adalah cara transaksi jual-beli akun game yang melibatkan
+        <b>admin LUUNASTORE.IN sebagai pihak ketiga</b>. Uang dari pembeli ditahan
+        dulu oleh admin — bukan langsung ke penjual — dan akun dari penjual baru diserahkan
+        setelah pembayaran benar-benar aman.
+      </p>
+      <div class="panel" style="margin-top:14px;">
+        Dengan cara ini, <b>pembeli</b> gak perlu takut bayar tapi gak dapat akun, dan
+        <b>penjual</b> gak perlu takut kasih akun tapi gak dibayar. Semua diawasi admin
+        dari awal sampai selesai.
+      </div>
+    </section>
+
+    <section id="rekber-proses">
+      <div class="kicker"><div class="bar"></div>REKBER</div>
+      <h2>Proses Step by Step Rekber</h2>
+      <div class="timeline">
+        <div class="tl-item" data-n="1"><p>Seller/buyer membuat grup berisi <b>3 orang</b>: admin, seller, dan buyer.</p></div>
+        <div class="tl-item" data-n="2"><p>Buyer mengisi <b>format rekber</b> yang diberikan admin.</p></div>
+        <div class="tl-item" data-n="3"><p>Admin memberikan info pembayaran. Buyer membayar sesuai <b>nominal akun + fee</b> yang tertera.</p></div>
+        <div class="tl-item" data-n="4"><p>Setelah pembayaran masuk, buyer bisa langsung minta data akun ke seller dan mulai <b>mengamankan akun</b>.</p></div>
+        <div class="tl-item" data-n="5"><p>Kalau sudah selesai mengamankan akun, buyer bilang <b>"done / selesai"</b> di grup supaya seller bisa mencairkan uang.</p></div>
+        <div class="tl-item" data-n="6"><p>Seller mengisi <b>format pencairan</b> yang diberikan admin.</p></div>
+        <div class="tl-item" data-n="7"><p>Admin mencairkan uang ke seller — <b>transaksi selesai</b>.</p></div>
+      </div>
+    </section>
+
+    <section id="japost-apa">
+      <div class="kicker"><div class="bar"></div>JAPOST</div>
+      <h2>Apa itu Japost?</h2>
+      <p class="lead">
+        Japost adalah <b>jasa posting</b> dari admin untuk mempromosikan akun yang kamu jual
+        lewat akun Instagram admin — biar akunmu dilihat lebih banyak calon pembeli.
+      </p>
+    </section>
+
+    <section id="japost-cara">
+      <div class="kicker"><div class="bar"></div>JAPOST</div>
+      <h2>Cara Kerja Japost</h2>
+      <p class="lead">Ada 2 pilihan sistem yang bisa kamu pakai:</p>
+
+      <div class="compare">
+        <div class="compare-card dropship">
+          <span class="tag">RISIKO LEBIH KECIL</span>
+          <h3>Dropship</h3>
+          <div class="fee">15k <small>/ potongan pas laku</small></div>
+          <ul>
+            <li>Akun langsung diposting <b>tanpa bayar di awal</b>.</li>
+            <li>Kalau laku, admin ambil fee <b>15k</b> dari hasil jual.</li>
+            <li>Cocok kalau gak mau keluar modal duluan.</li>
+            <li>Potongan pas laku lebih besar dibanding jasa posting biasa.</li>
+          </ul>
+        </div>
+        <div class="compare-card biasa">
+          <span class="tag">POTONGAN LEBIH KECIL</span>
+          <h3>Jasa Posting Biasa</h3>
+          <div class="fee">5k <small>/ bayar di awal</small></div>
+          <ul>
+            <li>Bayar <b>5k di awal</b> supaya akun diposting di akun admin.</li>
+            <li>Dapat bonus <b>free repost berkali-kali</b> + posting story.</li>
+            <li>Potongan pas laku lebih kecil.</li>
+            <li>Kalau akun gak kunjung laku, 5k di awal tetap hangus.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="amankan">
+      <div class="kicker"><div class="bar"></div>KEAMANAN</div>
+      <h2>Cara Mengamankan Akun</h2>
+      <p class="lead" style="margin-bottom:18px;">Langkah amankan akun beda-beda tergantung jenis akunnya. Tap salah satu buat lihat detailnya.</p>
+
+      <details open>
+        <summary>Akun Google <span class="chev">▾</span></summary>
+        <div class="acc-body">
+          <ol>
+            <li>Sebelum login, minta seller ganti <b>semua nomor & email pemulihan</b> ke punya kamu.</li>
+            <li>Minta seller aktifkan <b>verifikasi 2 langkah (V2L)</b> pakai nomor kamu.</li>
+            <li>Minta seller <b>keluar dari semua perangkat</b> yang login di akun itu, sebelum diserahkan ke kamu.</li>
+            <li>Kamu login, lalu ganti password lewat menu <b>"Lupa sandi"</b> menggunakan nomor/email pemulihan milikmu.</li>
+            <li>Setelah semua selesai, seller kasih <b>rekaman bukti logout</b> dari akun.</li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>Akun Nexon <span class="chev">▾</span></summary>
+        <div class="acc-body">
+          <div class="warn">⚠️ <span><b>Jangan pernah</b> minta seller ganti email kamu duluan — berisiko! Untuk akun Nexon, take-over lewat <b>sgmail</b>.</span></div>
+          <ol>
+            <li>Take <b>sgmail</b> untuk akun Nexon.</li>
+            <li>Kalau mau ganti email atau ubah sandi setelahnya, kunjungi <a href="https://share.google/iSDPjn7gaAGZqGSF1" target="_blank" rel="noopener">link panduan ini</a>.</li>
+            <li>Seller kasih <b>rekaman bukti logout</b> setelah buyer selesai mengamankan akun.</li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>Akun Hoyoverse & Moonton <span class="chev">▾</span></summary>
+        <div class="acc-body">
+          <div class="warn">⚠️ <span><b>Jangan login</b> ke akun sebelum email diganti ke email kamu.</span></div>
+          <ol>
+            <li>Minta seller ganti <b>detail email akun</b> ke email kamu <b>duluan</b>, sebelum kamu login.</li>
+            <li>Kalau proses take-over-nya pakai <b>sgmail</b>, ikuti langkah yang sama seperti amankan Akun Google di atas.</li>
+          </ol>
+        </div>
+      </details>
+    </section>
+
+    <section id="grup">
+      <div class="kicker"><div class="bar"></div>KOMUNITAS</div>
+      <h2>Gabung Grup Kami</h2>
+      <p class="lead">Tap salah satu buat langsung join grup WhatsApp-nya.</p>
+      <div class="grup-list">
+        <a class="grup-card" href="https://chat.whatsapp.com/DzsoVgj12MVAWOs3xlHtFM?mode=hqrt3" target="_blank" rel="noopener">
+          <div class="ico">💬</div>
+          <div><h3>Jual Beli BA, GI, HI, HSR, ZZ</h3><p>Gabung grup →</p></div>
+        </a>
+        <a class="grup-card" href="https://chat.whatsapp.com/BruPPaycZb24ZZ0oYhUiAR?mode=hqrt3" target="_blank" rel="noopener">
+          <div class="ico">💬</div>
+          <div><h3>Jual Beli All Game</h3><p>Gabung grup →</p></div>
+        </a>
+        <a class="grup-card" href="https://chat.whatsapp.com/LCHpbVCiyQi6iSSu6jGMja?s=cl&amp;p=a&amp;mlu=4&amp;ilr=4" target="_blank" rel="noopener">
+          <div class="ico">💬</div>
+          <div><h3>Jual Beli Akun & Aplikasi Premium</h3><p>Gabung grup →</p></div>
+        </a>
+        <a class="grup-card" href="https://chat.whatsapp.com/BQMOmbaNoPZHm5UAgf7sHM" target="_blank" rel="noopener">
+          <div class="ico">💬</div>
+          <div><h3>Komunitas Luunastore</h3><p>Gabung grup →</p></div>
+        </a>
+      </div>
+    </section>
+
+    <section id="testimoni">
+      <div class="kicker"><div class="bar"></div>TESTIMONI</div>
+      <h2>Testimoni Transaksi</h2>
+      <p class="lead">Feedback dari customer, bisa dicek di postingan berikut:</p>
+      <div class="grup-list">
+        <a class="grup-card" href="https://www.facebook.com/100063838580264/posts/734994498638496/?app=fbl" target="_blank" rel="noopener">
+          <div class="ico">👍</div>
+          <div><h3>Feedback di Facebook</h3><p>Lihat postingan →</p></div>
+        </a>
+        <a class="grup-card" href="https://www.instagram.com/p/C5XI11lysY2/?stkn=MXJmZmx1ZDd3b3hvMg==" target="_blank" rel="noopener">
+          <div class="ico">📷</div>
+          <div><h3>Feedback di Instagram</h3><p>Lihat postingan →</p></div>
+        </a>
+      </div>
+    </section>
+
+    <section id="jam">
+      <div class="kicker"><div class="bar"></div>JAM OPERASIONAL</div>
+      <h2>Jam Operasional</h2>
+      <div class="jam-panel">
+        <div class="ico">🕒</div>
+        <div>
+          <b>09.00 — 23.00 WIB</b>
+          <span>Setiap hari. Chat di luar jam ini akan dibalas begitu admin online.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="syarat">
+      <div class="kicker"><div class="bar"></div>KETENTUAN</div>
+      <h2>Syarat & Ketentuan</h2>
+      <p class="lead">Baca dulu sebelum transaksi biar sama-sama enak.</p>
+      <div class="rule-list">
+        <div class="rule-item"><span class="n">1.</span>Semua transaksi jual beli akun wajib lewat sistem rekber. Transaksi di luar rekber bukan tanggung jawab admin.</div>
+        <div class="rule-item"><span class="n">2.</span>Dana yang sudah dicairkan ke seller tidak dapat dikembalikan.</div>
+        <div class="rule-item"><span class="n">3.</span>Buyer wajib mengecek & mengamankan akun sebelum bilang "done" di grup rekber. Klaim setelah dana dicairkan tidak dilayani.</div>
+        <div class="rule-item"><span class="n">4.</span>Untuk japost sistem jasa posting biasa, biaya 5k di awal tidak dapat dikembalikan meskipun akun belum terjual.</div>
+        <div class="rule-item"><span class="n">5.</span>Admin berhak menolak transaksi yang terindikasi penipuan atau mencurigakan.</div>
+        <div class="rule-item"><span class="n">6.</span>Segala bentuk penipuan yang mengatasnamakan admin di luar grup resmi bukan tanggung jawab kami.</div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>© LUUNASTORE.IN — Layanan jual beli akun & top up</footer>
+
+</body>
+</html>
